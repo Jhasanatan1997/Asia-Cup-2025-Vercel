@@ -122,8 +122,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Updated to use local cricket stadium background image */
-    background: url("/cricket-stadium-background.jpg") no-repeat center center fixed;
+    /* Added dark overlay to improve text readability over background image */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/cricket-stadium-background.jpg")
+      no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     /* Fallback color in case image doesn't load */

@@ -1,17 +1,18 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
+    <header className="flex items-center justify-between px-6 py-4 backdrop-blur-sm">
       <div className="flex items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-green-500 rounded-sm flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm"></div>
-          </div>
-          <div className="text-white">
-            <div className="text-sm font-medium">cricket@</div>
-            <div className="text-lg font-bold">OTTplay</div>
-          </div>
+          <Image
+            src="/ottplay-logo.png"
+            alt="OTTplay"
+            width={120}
+            height={40}
+            className="h-10 w-auto mix-blend-screen opacity-90"
+          />
         </Link>
       </div>
 
