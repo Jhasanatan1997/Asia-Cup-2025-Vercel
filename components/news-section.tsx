@@ -1,7 +1,6 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
-import Link from "next/link"
 import { useState, useEffect } from "react"
 
 interface NewsArticle {
@@ -41,11 +40,8 @@ export function NewsSection() {
     return (
       <section className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
+          <div className="mb-8">
             <h2 className="text-3xl font-bold text-white">Latest News</h2>
-            <Link href="/news" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
-              View All News →
-            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
@@ -67,11 +63,8 @@ export function NewsSection() {
   return (
     <section className="py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-8">
           <h2 className="text-3xl font-bold text-white">Latest News</h2>
-          <Link href="/news" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
-            View All News →
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

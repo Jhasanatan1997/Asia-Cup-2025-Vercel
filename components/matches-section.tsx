@@ -1,17 +1,39 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight, Play } from "lucide-react"
 
-const liveMatches: any[] = []
+const liveMatches = [
+  {
+    id: 1,
+    team1: {
+      name: "IND",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381895.png",
+    },
+    team2: {
+      name: "PAK",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381891.png",
+    },
+    score1: "156/4",
+    score2: "89/3",
+    overs1: "18.2",
+    overs2: "12.0",
+  },
+]
 
 const upcomingMatches = [
   {
     id: 1,
-    team1: { name: "AFG", flag: "/afghanistan-flag.png" },
-    team2: { name: "HK", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "AFG",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381892.png",
+    },
+    team2: {
+      name: "HK",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/383100/383120.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "9 SEP",
@@ -19,8 +41,14 @@ const upcomingMatches = [
   },
   {
     id: 2,
-    team1: { name: "UAE", flag: "/afghanistan-flag.png" },
-    team2: { name: "IND", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "UAE",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/382100/382186.png",
+    },
+    team2: {
+      name: "IND",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381895.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "10 SEP",
@@ -28,8 +56,14 @@ const upcomingMatches = [
   },
   {
     id: 3,
-    team1: { name: "BAN", flag: "/afghanistan-flag.png" },
-    team2: { name: "HK", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "BAN",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/341400/341456.png",
+    },
+    team2: {
+      name: "HK",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/383100/383120.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "11 SEP",
@@ -37,8 +71,14 @@ const upcomingMatches = [
   },
   {
     id: 4,
-    team1: { name: "OMN", flag: "/afghanistan-flag.png" },
-    team2: { name: "PAK", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "OMN",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381858.png",
+    },
+    team2: {
+      name: "PAK",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381891.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "12 SEP",
@@ -46,8 +86,14 @@ const upcomingMatches = [
   },
   {
     id: 5,
-    team1: { name: "BAN", flag: "/afghanistan-flag.png" },
-    team2: { name: "SL", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "BAN",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/341400/341456.png",
+    },
+    team2: {
+      name: "SL",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/340000/340047.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "13 SEP",
@@ -55,8 +101,14 @@ const upcomingMatches = [
   },
   {
     id: 6,
-    team1: { name: "IND", flag: "/afghanistan-flag.png" },
-    team2: { name: "PAK", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "IND",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381895.png",
+    },
+    team2: {
+      name: "PAK",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381891.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "14 SEP",
@@ -67,8 +119,14 @@ const upcomingMatches = [
 const completedMatches = [
   {
     id: 5,
-    team1: { name: "IND", flag: "/afghanistan-flag.png" },
-    team2: { name: "SL", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "IND",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381895.png",
+    },
+    team2: {
+      name: "SL",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/340000/340047.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     score1: "184/5",
@@ -78,8 +136,14 @@ const completedMatches = [
   },
   {
     id: 6,
-    team1: { name: "PAK", flag: "/afghanistan-flag.png" },
-    team2: { name: "BAN", flag: "/bangladesh-flag.png" },
+    team1: {
+      name: "PAK",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/381800/381891.png",
+    },
+    team2: {
+      name: "BAN",
+      flag: "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/341400/341456.png",
+    },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     score1: "159/7",
@@ -91,18 +155,16 @@ const completedMatches = [
 
 function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "completed" }) {
   return (
-    <Card className="flex-shrink-0 w-80 bg-purple-900 border-purple-700 backdrop-blur-sm hover:bg-purple-800 transition-colors">
-      <div className="p-4">
+    <Card
+      className="flex-shrink-0 w-80 border-purple-700 backdrop-blur-sm hover:opacity-90 transition-colors"
+      style={{ backgroundColor: "#4e008a" }}
+    >
+      <div className="p-2 pt-1">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <img
-              src={match.player1 || "/placeholder.svg"}
-              alt="Player 1"
-              className="w-12 h-12 rounded-full object-cover"
-            />
             <div className="flex items-center gap-1">
-              <img src={match.team1.flag || "/placeholder.svg"} alt={match.team1.name} className="w-6 h-6 rounded" />
-              <span className="text-white font-bold text-sm">{match.team1.name}</span>
+              <img src={match.team1.flag || "/placeholder.svg"} alt={match.team1.name} className="w-6 h-6" />
+              <span className="text-white font-bold text-xl">{match.team1.name}</span>
             </div>
           </div>
 
@@ -110,14 +172,9 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
 
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
-              <span className="text-white font-bold text-sm">{match.team2.name}</span>
-              <img src={match.team2.flag || "/placeholder.svg"} alt={match.team2.name} className="w-6 h-6 rounded" />
+              <span className="text-white font-bold text-xl">{match.team2.name}</span>
+              <img src={match.team2.flag || "/placeholder.svg"} alt={match.team2.name} className="w-6 h-6" />
             </div>
-            <img
-              src={match.player2 || "/placeholder.svg"}
-              alt="Player 2"
-              className="w-12 h-12 rounded-full object-cover"
-            />
           </div>
         </div>
 
@@ -126,19 +183,19 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
             <div className="flex justify-between text-white text-sm mb-3">
               <div className="text-center">
                 <div className="font-bold">{match.score1}</div>
-                <div className="text-white/60">({match.overs1} ov)</div>
+                <div className="text-white/60 font-bold">({match.overs1} ov)</div>
               </div>
               <div className="text-center">
                 <div className="font-bold">{match.score2}</div>
-                <div className="text-white/60">({match.overs2} ov)</div>
+                <div className="text-white/60 font-bold">({match.overs2} ov)</div>
               </div>
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-red-400 font-bold text-sm">{match.status}</span>
+                <span className="text-red-400 font-bold text-sm">LIVE</span>
               </div>
-              <Button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-sm">
+              <Button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-sm font-bold">
                 <Play className="w-4 h-4 mr-1" />
                 Watch Live
               </Button>
@@ -148,12 +205,9 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
 
         {type === "upcoming" && (
           <div className="flex items-center justify-between text-white/80 text-sm">
-            <span>
+            <span className="font-bold">
               {match.date} | {match.time}
             </span>
-            <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center">
-              <div className="w-3 h-3 bg-white rounded"></div>
-            </div>
           </div>
         )}
 
@@ -169,10 +223,10 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
             </div>
             <div className="flex items-center justify-between">
               <div className="text-white/80 text-sm">
-                <div className="font-medium">{match.result}</div>
-                <div className="text-xs">{match.date}</div>
+                <div className="font-bold">{match.result}</div>
+                <div className="text-xs font-bold">{match.date}</div>
               </div>
-              <Button className="bg-cyan-400 hover:bg-cyan-300 text-black px-4 py-2 text-sm font-bold shadow-[0_0_10px_rgba(34,211,238,0.5)]">
+              <Button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-sm font-bold">
                 Highlights
               </Button>
             </div>
@@ -184,7 +238,20 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
 }
 
 export function MatchesSection() {
-  const [activeTab, setActiveTab] = useState<"live" | "upcoming" | "completed">("upcoming")
+  const [activeTab, setActiveTab] = useState<"live" | "upcoming" | "completed">("live")
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -320, behavior: "smooth" })
+    }
+  }
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 320, behavior: "smooth" })
+    }
+  }
 
   const getMatches = () => {
     switch (activeTab) {
@@ -215,56 +282,56 @@ export function MatchesSection() {
   return (
     <div className="px-6 py-8 -mt-10">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-white mb-6">Matches</h2>
-
-        {/* Tab buttons */}
-        <div className="flex gap-1 bg-slate-800/50 p-1 rounded-lg mb-6 w-fit">
-          <Button
-            onClick={() => setActiveTab("live")}
-            className={`px-6 py-2 text-sm font-medium transition-all ${
-              activeTab === "live"
-                ? "bg-red-600 text-white shadow-lg"
-                : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
-            }`}
-          >
-            Live
-          </Button>
-          <Button
-            onClick={() => setActiveTab("upcoming")}
-            className={`px-6 py-2 text-sm font-medium transition-all ${
-              activeTab === "upcoming"
-                ? "bg-blue-600 text-white shadow-lg"
-                : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
-            }`}
-          >
-            Upcoming
-          </Button>
-          <Button
-            onClick={() => setActiveTab("completed")}
-            className={`px-6 py-2 text-sm font-medium transition-all ${
-              activeTab === "completed"
-                ? "bg-green-600 text-white shadow-lg"
-                : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
-            }`}
-          >
-            Completed
-          </Button>
+        {/* Tab buttons moved inline */}
+        <div className="flex items-center mb-4" style={{ gap: "30mm" }}>
+          <h2 className="text-3xl font-bold text-white">Matches</h2>
+          <div className="flex gap-1 bg-slate-800/50 p-1 rounded-lg">
+            <Button
+              onClick={() => setActiveTab("live")}
+              className={`px-6 py-2 text-sm font-medium transition-all ${
+                activeTab === "live"
+                  ? "bg-red-600 text-white shadow-lg"
+                  : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
+              }`}
+            >
+              Live
+            </Button>
+            <Button
+              onClick={() => setActiveTab("upcoming")}
+              className={`px-6 py-2 text-sm font-medium transition-all ${
+                activeTab === "upcoming"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
+              }`}
+            >
+              Upcoming
+            </Button>
+            <Button
+              onClick={() => setActiveTab("completed")}
+              className={`px-6 py-2 text-sm font-medium transition-all ${
+                activeTab === "completed"
+                  ? "bg-green-600 text-white shadow-lg"
+                  : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
+              }`}
+            >
+              Completed
+            </Button>
+          </div>
         </div>
 
         {/* Match content */}
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold text-white">{getTabTitle()}</h3>
           <div className="flex gap-2">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50">
+            <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50" onClick={scrollLeft}>
               <ChevronLeft className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50">
+            <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50" onClick={scrollRight}>
               <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto pb-4">
+        <div ref={scrollContainerRef} className="flex gap-4 overflow-x-auto pb-4 scroll-smooth">
           {getMatches().map((match) => (
             <MatchCard key={match.id} match={match} type={activeTab} />
           ))}
