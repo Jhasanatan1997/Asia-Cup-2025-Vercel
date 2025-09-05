@@ -40,16 +40,10 @@ export function Header() {
           Table
         </Link>
         <Link
-          href="/stats"
+          href="/squads"
           className="text-slate-300 hover:text-white hover:bg-slate-800/50 px-3 py-2 rounded-md transition-colors"
         >
-          Stats
-        </Link>
-        <Link
-          href="/players"
-          className="text-slate-300 hover:text-white hover:bg-slate-800/50 px-3 py-2 rounded-md transition-colors"
-        >
-          Players
+          Squads
         </Link>
       </nav>
     </header>
