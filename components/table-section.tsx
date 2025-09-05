@@ -7,32 +7,37 @@ export function TableSection() {
         {/* Group A Table */}
         <div>
           <h2 className="text-3xl font-bold text-white mb-6">Table</h2>
-          <Card className="bg-slate-800 border-slate-700 backdrop-blur-sm">
-            <div className="p-4">
+          <Card className="bg-slate-800 border-slate-700 backdrop-blur-sm h-80">
+            <div className="p-4 h-full flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-white font-bold">GROUP A</span>
               </div>
 
-              <div className="space-y-2">
-                <div className="grid grid-cols-5 gap-4 text-white/60 text-sm font-medium">
-                  <span>Team</span>
-                  <span className="text-center">M</span>
-                  <span className="text-center">W</span>
-                  <span className="text-center">L</span>
-                  <span className="text-center">Pts</span>
+              <div className="space-y-2 flex-1">
+                <div className="grid grid-cols-6 gap-4 text-sm font-bold">
+                  <span className="text-white">Team</span>
+                  <span className="text-center text-white">M</span>
+                  <span className="text-center text-green-400">W</span>
+                  <span className="text-center text-red-400">L</span>
+                  <span className="text-center text-white">NRR</span>
+                  <span className="text-center text-white">Pts</span>
                 </div>
 
                 {[
-                  { team: "India", m: 3, w: 3, l: 0, pts: 6 },
-                  { team: "Pakistan", m: 3, w: 2, l: 1, pts: 4 },
-                  { team: "Bangladesh", m: 3, w: 1, l: 2, pts: 2 },
-                  { team: "Afghanistan", m: 3, w: 0, l: 3, pts: 0 },
+                  { team: "India", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
+                  { team: "Oman", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
+                  { team: "Pakistan", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
+                  { team: "UAE", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
                 ].map((team, index) => (
-                  <div key={index} className="grid grid-cols-5 gap-4 text-white text-sm py-2 border-b border-white/10">
+                  <div
+                    key={index}
+                    className="grid grid-cols-6 gap-4 text-white text-sm py-2 border-b border-white/10 h-10 items-center"
+                  >
                     <span className="font-medium">{team.team}</span>
                     <span className="text-center">{team.m}</span>
-                    <span className="text-center">{team.w}</span>
-                    <span className="text-center">{team.l}</span>
+                    <span className="text-center text-green-400">{team.w}</span>
+                    <span className="text-center text-red-400">{team.l}</span>
+                    <span className="text-center">{team.nrr}</span>
                     <span className="text-center font-bold">{team.pts}</span>
                   </div>
                 ))}
@@ -44,32 +49,37 @@ export function TableSection() {
         {/* Group B Table */}
         <div>
           <h2 className="text-3xl font-bold text-white mb-6">&nbsp;</h2>
-          <Card className="bg-slate-800 border-slate-700 backdrop-blur-sm">
-            <div className="p-4">
+          <Card className="bg-slate-800 border-slate-700 backdrop-blur-sm h-80">
+            <div className="p-4 h-full flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-white font-bold">GROUP B</span>
               </div>
 
-              <div className="space-y-2">
-                <div className="grid grid-cols-5 gap-4 text-white/60 text-sm font-medium">
-                  <span>Team</span>
-                  <span className="text-center">M</span>
-                  <span className="text-center">W</span>
-                  <span className="text-center">L</span>
-                  <span className="text-center">Pts</span>
+              <div className="space-y-2 flex-1">
+                <div className="grid grid-cols-6 gap-4 text-sm font-bold">
+                  <span className="text-white">Team</span>
+                  <span className="text-center text-white">M</span>
+                  <span className="text-center text-green-400">W</span>
+                  <span className="text-center text-red-400">L</span>
+                  <span className="text-center text-white">NRR</span>
+                  <span className="text-center text-white">Pts</span>
                 </div>
 
                 {[
-                  { team: "Sri Lanka", m: 3, w: 2, l: 1, pts: 4 },
-                  { team: "Nepal", m: 3, w: 2, l: 1, pts: 4 },
-                  { team: "UAE", m: 3, w: 1, l: 2, pts: 2 },
-                  { team: "Hong Kong", m: 3, w: 1, l: 2, pts: 2 },
+                  { team: "SL", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
+                  { team: "HK", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
+                  { team: "Bangladesh", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
+                  { team: "Afghanistan", m: 0, w: 0, l: 0, nrr: 0, pts: 0 },
                 ].map((team, index) => (
-                  <div key={index} className="grid grid-cols-5 gap-4 text-white text-sm py-2 border-b border-white/10">
+                  <div
+                    key={index}
+                    className="grid grid-cols-6 gap-4 text-white text-sm py-2 border-b border-white/10 h-10 items-center"
+                  >
                     <span className="font-medium">{team.team}</span>
                     <span className="text-center">{team.m}</span>
-                    <span className="text-center">{team.w}</span>
-                    <span className="text-center">{team.l}</span>
+                    <span className="text-center text-green-400">{team.w}</span>
+                    <span className="text-center text-red-400">{team.l}</span>
+                    <span className="text-center">{team.nrr}</span>
                     <span className="text-center font-bold">{team.pts}</span>
                   </div>
                 ))}
