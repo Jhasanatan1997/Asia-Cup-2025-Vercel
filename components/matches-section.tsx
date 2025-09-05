@@ -5,51 +5,62 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight, Play } from "lucide-react"
 
-const liveMatches = [
-  {
-    id: 1,
-    team1: { name: "IND", flag: "/afghanistan-flag.png" },
-    team2: { name: "PAK", flag: "/bangladesh-flag.png" },
-    player1: "/placeholder-evki0.png",
-    player2: "/placeholder-02xyy.png",
-    score1: "156/4",
-    score2: "89/2",
-    overs1: "18.3",
-    overs2: "12.1",
-    status: "LIVE",
-  },
-  {
-    id: 2,
-    team1: { name: "SL", flag: "/afghanistan-flag.png" },
-    team2: { name: "BAN", flag: "/bangladesh-flag.png" },
-    player1: "/placeholder-evki0.png",
-    player2: "/placeholder-02xyy.png",
-    score1: "201/6",
-    score2: "45/1",
-    overs1: "20.0",
-    overs2: "6.2",
-    status: "LIVE",
-  },
-]
+const liveMatches: any[] = []
 
 const upcomingMatches = [
   {
-    id: 3,
+    id: 1,
     team1: { name: "AFG", flag: "/afghanistan-flag.png" },
-    team2: { name: "NEP", flag: "/bangladesh-flag.png" },
+    team2: { name: "HK", flag: "/bangladesh-flag.png" },
+    player1: "/placeholder-evki0.png",
+    player2: "/placeholder-02xyy.png",
+    date: "9 SEP",
+    time: "2:30 PM",
+  },
+  {
+    id: 2,
+    team1: { name: "UAE", flag: "/afghanistan-flag.png" },
+    team2: { name: "IND", flag: "/bangladesh-flag.png" },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "10 SEP",
     time: "2:30 PM",
   },
   {
-    id: 4,
-    team1: { name: "UAE", flag: "/afghanistan-flag.png" },
+    id: 3,
+    team1: { name: "BAN", flag: "/afghanistan-flag.png" },
     team2: { name: "HK", flag: "/bangladesh-flag.png" },
     player1: "/placeholder-evki0.png",
     player2: "/placeholder-02xyy.png",
     date: "11 SEP",
-    time: "7:00 PM",
+    time: "2:30 PM",
+  },
+  {
+    id: 4,
+    team1: { name: "OMN", flag: "/afghanistan-flag.png" },
+    team2: { name: "PAK", flag: "/bangladesh-flag.png" },
+    player1: "/placeholder-evki0.png",
+    player2: "/placeholder-02xyy.png",
+    date: "12 SEP",
+    time: "2:30 PM",
+  },
+  {
+    id: 5,
+    team1: { name: "BAN", flag: "/afghanistan-flag.png" },
+    team2: { name: "SL", flag: "/bangladesh-flag.png" },
+    player1: "/placeholder-evki0.png",
+    player2: "/placeholder-02xyy.png",
+    date: "13 SEP",
+    time: "2:30 PM",
+  },
+  {
+    id: 6,
+    team1: { name: "IND", flag: "/afghanistan-flag.png" },
+    team2: { name: "PAK", flag: "/bangladesh-flag.png" },
+    player1: "/placeholder-evki0.png",
+    player2: "/placeholder-02xyy.png",
+    date: "14 SEP",
+    time: "2:30 PM",
   },
 ]
 
@@ -173,7 +184,7 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
 }
 
 export function MatchesSection() {
-  const [activeTab, setActiveTab] = useState<"live" | "upcoming" | "completed">("live")
+  const [activeTab, setActiveTab] = useState<"live" | "upcoming" | "completed">("upcoming")
 
   const getMatches = () => {
     switch (activeTab) {
@@ -202,7 +213,7 @@ export function MatchesSection() {
   }
 
   return (
-    <div className="px-6 py-8">
+    <div className="px-6 py-8 -mt-10">
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-white mb-6">Matches</h2>
 
