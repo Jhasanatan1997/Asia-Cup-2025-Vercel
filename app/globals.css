@@ -122,8 +122,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Updated to match OTTplay's dark navy background */
-    background: #1a1b3a !important;
+    /* Updated to use local cricket stadium background image */
+    background: url("/cricket-stadium-background.jpg") no-repeat center center fixed;
+    background-size: cover;
     min-height: 100vh;
+    /* Fallback color in case image doesn't load */
+    background-color: #1a1b3a;
   }
 }
