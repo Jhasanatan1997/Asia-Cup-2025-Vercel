@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { MatchesSection } from "@/components/matches-section"
 import { TableSection } from "@/components/table-section"
 import { NewsSection } from "@/components/news-section"
+import { SquadsSection } from "@/components/squads-section"
 
 export default function HomePage() {
   return (
@@ -18,6 +19,9 @@ export default function HomePage() {
         </div>
         <div id="news">
           <NewsSection />
+        </div>
+        <div id="squads">
+          <SquadsSection />
         </div>
       </main>
     </div>

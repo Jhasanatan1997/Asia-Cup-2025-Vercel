@@ -46,9 +46,12 @@ export function Header() {
         >
           Table
         </button>
-        <Link href="/squads" className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors">
+        <button
+          onClick={() => scrollToSection("squads")}
+          className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors"
+        >
           Squads
-        </Link>
+        </button>
       </nav>
     </header>
   )
