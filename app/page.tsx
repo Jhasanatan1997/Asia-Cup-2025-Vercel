@@ -10,9 +10,15 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <MatchesSection />
-        <TableSection />
-        <NewsSection />
+        <div id="matches">
+          <MatchesSection />
+        </div>
+        <div id="table">
+          <TableSection />
+        </div>
+        <div id="news">
+          <NewsSection />
+        </div>
       </main>
     </div>
   )

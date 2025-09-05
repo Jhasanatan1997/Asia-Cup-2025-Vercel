@@ -1,7 +1,16 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 
 export function Header() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <header className="flex items-center justify-between px-6 py-4">
       <div className="flex items-center gap-2">
@@ -19,15 +28,24 @@ export function Header() {
           </div>
         </div>
 
-        <Link href="/matches" className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors">
+        <button
+          onClick={() => scrollToSection("matches")}
+          className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors"
+        >
           Matches
-        </Link>
-        <Link href="/news" className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors">
+        </button>
+        <button
+          onClick={() => scrollToSection("news")}
+          className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors"
+        >
           News
-        </Link>
-        <Link href="/table" className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors">
+        </button>
+        <button
+          onClick={() => scrollToSection("table")}
+          className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors"
+        >
           Table
-        </Link>
+        </button>
         <Link href="/squads" className="text-slate-300 hover:text-white px-3 py-2 rounded-md transition-colors">
           Squads
         </Link>
