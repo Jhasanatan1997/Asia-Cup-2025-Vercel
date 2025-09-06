@@ -156,31 +156,31 @@ const completedMatches = [
 function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "completed" }) {
   return (
     <Card
-      className="flex-shrink-0 w-80 border-purple-700 backdrop-blur-sm hover:opacity-90 transition-colors"
+      className="flex-shrink-0 w-full sm:w-80 md:w-72 lg:w-80 xl:w-84 border-purple-700 backdrop-blur-sm hover:opacity-90 transition-colors"
       style={{ backgroundColor: "#4e008a" }}
     >
-      <div className="p-2 pt-1">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
+      <div className="p-3 sm:p-2 pt-2 sm:pt-1">
+        <div className="flex items-center justify-between mb-3 sm:mb-4">
+          <div className="flex items-center gap-1 sm:gap-2">
             <div className="flex items-center gap-1">
-              <img src={match.team1.flag || "/placeholder.svg"} alt={match.team1.name} className="w-6 h-6" />
-              <span className="text-white font-bold text-xl">{match.team1.name}</span>
+              <img src={match.team1.flag || "/placeholder.svg"} alt={match.team1.name} className="w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="text-white font-bold text-lg sm:text-xl">{match.team1.name}</span>
             </div>
           </div>
 
-          <div className="text-white text-lg font-bold">VS</div>
+          <div className="text-white text-base sm:text-lg font-bold">VS</div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <div className="flex items-center gap-1">
-              <span className="text-white font-bold text-xl">{match.team2.name}</span>
-              <img src={match.team2.flag || "/placeholder.svg"} alt={match.team2.name} className="w-6 h-6" />
+              <span className="text-white font-bold text-lg sm:text-xl">{match.team2.name}</span>
+              <img src={match.team2.flag || "/placeholder.svg"} alt={match.team2.name} className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
           </div>
         </div>
 
         {type === "live" && (
           <>
-            <div className="flex justify-between text-white text-sm mb-3">
+            <div className="flex justify-between text-white text-xs sm:text-sm mb-3">
               <div className="text-center">
                 <div className="font-bold">{match.score1}</div>
                 <div className="text-white/60 font-bold">({match.overs1} ov)</div>
@@ -193,18 +193,19 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-red-400 font-bold text-sm">LIVE</span>
+                <span className="text-red-400 font-bold text-xs sm:text-sm">LIVE</span>
               </div>
-              <Button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-sm font-bold">
-                <Play className="w-4 h-4 mr-1" />
-                Watch Live
+              <Button className="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold">
+                <Play className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="hidden sm:inline">Watch Live</span>
+                <span className="sm:hidden">Live</span>
               </Button>
             </div>
           </>
         )}
 
         {type === "upcoming" && (
-          <div className="flex items-center justify-between text-white/80 text-sm">
+          <div className="flex items-center justify-between text-white/80 text-xs sm:text-sm">
             <span className="font-bold">
               {match.date} | {match.time}
             </span>
@@ -213,7 +214,7 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
 
         {type === "completed" && (
           <>
-            <div className="flex justify-between text-white text-sm mb-3">
+            <div className="flex justify-between text-white text-xs sm:text-sm mb-3">
               <div className="text-center">
                 <div className="font-bold">{match.score1}</div>
               </div>
@@ -222,11 +223,11 @@ function MatchCard({ match, type }: { match: any; type: "live" | "upcoming" | "c
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <div className="text-white/80 text-sm">
-                <div className="font-bold">{match.result}</div>
+              <div className="text-white/80 text-xs sm:text-sm">
+                <div className="font-bold text-xs sm:text-sm">{match.result}</div>
                 <div className="text-xs font-bold">{match.date}</div>
               </div>
-              <Button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-sm font-bold">
+              <Button className="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold">
                 Highlights
               </Button>
             </div>
@@ -280,61 +281,77 @@ export function MatchesSection() {
   }
 
   return (
-    <div className="px-6 py-8 -mt-10">
-      <div className="mb-8">
-        {/* Tab buttons moved inline */}
-        <div className="flex items-center mb-4" style={{ gap: "30mm" }}>
-          <h2 className="text-3xl font-bold text-white">Matches</h2>
-          <div className="flex gap-1 bg-slate-800/50 p-1 rounded-lg">
-            <Button
-              onClick={() => setActiveTab("live")}
-              className={`px-6 py-2 text-sm font-medium transition-all ${
-                activeTab === "live"
-                  ? "bg-red-600 text-white shadow-lg"
-                  : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
-              }`}
-            >
-              Live
-            </Button>
-            <Button
-              onClick={() => setActiveTab("upcoming")}
-              className={`px-6 py-2 text-sm font-medium transition-all ${
-                activeTab === "upcoming"
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
-              }`}
-            >
-              Upcoming
-            </Button>
-            <Button
-              onClick={() => setActiveTab("completed")}
-              className={`px-6 py-2 text-sm font-medium transition-all ${
-                activeTab === "completed"
-                  ? "bg-green-600 text-white shadow-lg"
-                  : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
-              }`}
-            >
-              Completed
-            </Button>
+    <div className="py-8 sm:py-12 lg:py-16 -mt-6 sm:-mt-8 lg:-mt-10">
+      <div className="container-responsive">
+        <div className="mb-6 sm:mb-8">
+          {/* Header and tabs */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 lg:mb-8 gap-4 lg:gap-8">
+            <h2 className="text-responsive-3xl lg:text-responsive-4xl font-bold text-white">Matches</h2>
+            <div className="flex gap-1 bg-slate-800/50 p-1 rounded-lg w-fit">
+              <Button
+                onClick={() => setActiveTab("live")}
+                className={`px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all ${
+                  activeTab === "live"
+                    ? "bg-red-600 text-white shadow-lg"
+                    : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
+                }`}
+              >
+                Live
+              </Button>
+              <Button
+                onClick={() => setActiveTab("upcoming")}
+                className={`px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all ${
+                  activeTab === "upcoming"
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
+                }`}
+              >
+                Upcoming
+              </Button>
+              <Button
+                onClick={() => setActiveTab("completed")}
+                className={`px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium transition-all ${
+                  activeTab === "completed"
+                    ? "bg-green-600 text-white shadow-lg"
+                    : "bg-transparent text-white/70 hover:text-white hover:bg-slate-700/50"
+                }`}
+              >
+                Completed
+              </Button>
+            </div>
           </div>
-        </div>
 
-        {/* Match content */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex gap-2">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50" onClick={scrollLeft}>
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50" onClick={scrollRight}>
-              <ChevronRight className="h-5 w-5" />
-            </Button>
+          {/* Navigation arrows - hidden on mobile, visible on larger screens */}
+          <div className="hidden sm:flex items-center justify-between mb-6">
+            <div className="flex gap-2">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50" onClick={scrollLeft}>
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-white hover:bg-blue-900/50" onClick={scrollRight}>
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
-        </div>
 
-        <div ref={scrollContainerRef} className="flex gap-4 overflow-x-auto pb-4 scroll-smooth">
-          {getMatches().map((match) => (
-            <MatchCard key={match.id} match={match} type={activeTab} />
-          ))}
+          {/* Match cards container */}
+          <div className="relative">
+            {/* Mobile: Stack vertically, Tablet+: Horizontal scroll */}
+            <div className="sm:hidden space-y-4">
+              {getMatches().map((match) => (
+                <MatchCard key={match.id} match={match} type={activeTab} />
+              ))}
+            </div>
+            
+            {/* Tablet and desktop: Horizontal scroll */}
+            <div 
+              ref={scrollContainerRef} 
+              className="hidden sm:flex gap-4 lg:gap-6 overflow-x-auto pb-4 scroll-smooth scrollbar-hide"
+            >
+              {getMatches().map((match) => (
+                <MatchCard key={match.id} match={match} type={activeTab} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

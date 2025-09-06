@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <div id="matches">
           <MatchesSection />

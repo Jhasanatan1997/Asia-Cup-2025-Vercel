@@ -283,15 +283,15 @@ export function SquadsSection() {
   const [selectedCountry, setSelectedCountry] = useState<string>("India")
 
   return (
-    <section className="py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-4xl font-bold text-white">Squads</h2>
+    <section className="py-8 sm:py-12 lg:py-16">
+      <div className="container-responsive">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 gap-4">
+          <h2 className="text-responsive-3xl lg:text-responsive-4xl font-bold text-white">Squads</h2>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Select value={selectedCountry} onValueChange={setSelectedCountry}>
-            <SelectTrigger className="w-64 bg-slate-800 border-slate-700 text-white">
+            <SelectTrigger className="w-full sm:w-64 bg-slate-800 border-slate-700 text-white">
               <SelectValue placeholder="Select a country" />
             </SelectTrigger>
             <SelectContent
@@ -312,24 +312,24 @@ export function SquadsSection() {
         </div>
 
         {selectedCountry && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {squadsData[selectedCountry].map((player, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-lg">{player.name}</CardTitle>
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:bg-slate-750 transition-colors">
+                <CardHeader className="pb-2 sm:pb-3">
+                  <CardTitle className="text-white text-base sm:text-lg leading-tight">{player.name}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <p className="text-slate-300">
+                <CardContent className="pt-0">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <p className="text-slate-300 text-xs sm:text-sm">
                       <span className="font-semibold">Role:</span> {player.role}
                     </p>
                     {player.battingStyle && (
-                      <p className="text-slate-300">
+                      <p className="text-slate-300 text-xs sm:text-sm">
                         <span className="font-semibold">Batting:</span> {player.battingStyle}
                       </p>
                     )}
                     {player.bowlingStyle && (
-                      <p className="text-slate-300">
+                      <p className="text-slate-300 text-xs sm:text-sm">
                         <span className="font-semibold">Bowling:</span> {player.bowlingStyle}
                       </p>
                     )}

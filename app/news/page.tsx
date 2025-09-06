@@ -6,13 +6,13 @@ export default function NewsPage() {
     <div className="min-h-screen">
       <Header />
 
-      <main className="px-6 py-8">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-8">Cricket News</h1>
+      <main className="py-8 sm:py-12 lg:py-16 overflow-x-hidden">
+        <div className="container-responsive">
+          <h1 className="text-responsive-4xl lg:text-responsive-5xl font-bold text-white mb-6 sm:mb-8">Cricket News</h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Featured News */}
-            <Card className="bg-slate-800 border-slate-700 backdrop-blur-sm overflow-hidden md:col-span-2 lg:col-span-3">
+            <Card className="bg-slate-800 border-slate-700 backdrop-blur-sm overflow-hidden sm:col-span-2 lg:col-span-3">
               <div className="aspect-video bg-gradient-to-r from-yellow-400 to-orange-500 relative">
                 <img
                   src="/cricket-news-stadium-crowd.jpg"
@@ -20,11 +20,11 @@ export default function NewsPage() {
                   className="w-full h-full object-cover opacity-80"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
+                  <h2 className="text-responsive-xl sm:text-responsive-2xl font-bold text-white mb-2">
                     Asia Cup 2025: Complete Preview and Predictions
                   </h2>
-                  <p className="text-white/80">
+                  <p className="text-white/80 text-responsive-sm sm:text-responsive-base">
                     The most anticipated cricket tournament returns with exciting matchups and fierce competition.
                   </p>
                 </div>
@@ -66,18 +66,20 @@ export default function NewsPage() {
             ].map((article, index) => (
               <Card
                 key={index}
-                className="bg-slate-800 border-slate-700 backdrop-blur-sm overflow-hidden hover:bg-slate-700 transition-colors cursor-pointer"
+                className="bg-slate-800 border-slate-700 backdrop-blur-sm overflow-hidden hover:bg-slate-700 transition-colors cursor-pointer group"
               >
-                <div className="aspect-video relative">
+                <div className="aspect-video relative overflow-hidden">
                   <img
                     src={article.image || "/placeholder.svg"}
                     alt={article.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-white mb-2">{article.title}</h3>
-                  <p className="text-white/70 text-sm">{article.excerpt}</p>
+                <div className="p-3 sm:p-4">
+                  <h3 className="text-responsive-base sm:text-responsive-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="text-white/70 text-responsive-xs sm:text-responsive-sm">{article.excerpt}</p>
                 </div>
               </Card>
             ))}

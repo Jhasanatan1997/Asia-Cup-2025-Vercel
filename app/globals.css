@@ -120,6 +120,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html {
+    font-size: 16px;
+  }
+  
   body {
     @apply bg-background text-foreground;
     /* Added dark overlay to improve text readability over background image */
@@ -129,5 +134,180 @@
     min-height: 100vh;
     /* Fallback color in case image doesn't load */
     background-color: #1a1b3a;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Responsive font scaling */
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  /* Responsive image defaults */
+  img, iframe, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Container max-width constraints */
+  .container-responsive {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 641px) {
+    .container-responsive {
+      padding: 0 2rem;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .container-responsive {
+      padding: 0 3rem;
+    }
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    font-size: 0.75rem;
+  }
+
+  .text-responsive-sm {
+    font-size: 0.875rem;
+  }
+
+  .text-responsive-base {
+    font-size: 1rem;
+  }
+
+  .text-responsive-lg {
+    font-size: 1.125rem;
+  }
+
+  .text-responsive-xl {
+    font-size: 1.25rem;
+  }
+
+  .text-responsive-2xl {
+    font-size: 1.5rem;
+  }
+
+  .text-responsive-3xl {
+    font-size: 1.875rem;
+  }
+
+  .text-responsive-4xl {
+    font-size: 2.25rem;
+  }
+
+  .text-responsive-5xl {
+    font-size: 3rem;
+  }
+
+  .text-responsive-6xl {
+    font-size: 3.75rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .text-responsive-2xl {
+      font-size: 1.25rem;
+    }
+    
+    .text-responsive-3xl {
+      font-size: 1.5rem;
+    }
+    
+    .text-responsive-4xl {
+      font-size: 1.875rem;
+    }
+    
+    .text-responsive-5xl {
+      font-size: 2.25rem;
+    }
+    
+    .text-responsive-6xl {
+      font-size: 2.5rem;
+    }
+  }
+
+  /* Desktop adjustments */
+  @media (min-width: 1025px) {
+    .text-responsive-2xl {
+      font-size: 1.75rem;
+    }
+    
+    .text-responsive-3xl {
+      font-size: 2.25rem;
+    }
+    
+    .text-responsive-4xl {
+      font-size: 2.75rem;
+    }
+    
+    .text-responsive-5xl {
+      font-size: 3.5rem;
+    }
+    
+    .text-responsive-6xl {
+      font-size: 4.5rem;
+    }
+  }
+
+  /* Responsive spacing utilities */
+  .spacing-responsive-sm {
+    padding: 0.5rem;
+  }
+
+  .spacing-responsive-md {
+    padding: 1rem;
+  }
+
+  .spacing-responsive-lg {
+    padding: 1.5rem;
+  }
+
+  .spacing-responsive-xl {
+    padding: 2rem;
+  }
+
+  @media (max-width: 640px) {
+    .spacing-responsive-lg {
+      padding: 1rem;
+    }
+    
+    .spacing-responsive-xl {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .spacing-responsive-lg {
+      padding: 2rem;
+    }
+    
+    .spacing-responsive-xl {
+      padding: 3rem;
+    }
+  }
+
+  /* Hide scrollbars */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
