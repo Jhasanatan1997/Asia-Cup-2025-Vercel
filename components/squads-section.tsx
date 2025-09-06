@@ -18,35 +18,40 @@ interface Squad {
 const squadsData: Squad = {
   India: [
     { name: "Rohit Sharma", role: "Captain/Batsman", battingStyle: "Right-hand bat" },
-    { name: "Virat Kohli", role: "Batsman", battingStyle: "Right-hand bat" },
+    { name: "Virat Kohli", role: "Middle order Batsman", battingStyle: "Right-hand bat" },
     { name: "KL Rahul", role: "Wicket-keeper/Batsman", battingStyle: "Right-hand bat" },
-    {
-      name: "Hardik Pandya",
-      role: "All-rounder",
-      battingStyle: "Right-hand bat",
-      bowlingStyle: "Right-arm fast-medium",
-    },
-    { name: "Jasprit Bumrah", role: "Bowler", bowlingStyle: "Right-arm fast" },
-    {
-      name: "Ravindra Jadeja",
-      role: "All-rounder",
-      battingStyle: "Left-hand bat",
-      bowlingStyle: "Left-arm orthodox spin",
-    },
-    { name: "Mohammed Shami", role: "Bowler", bowlingStyle: "Right-arm fast-medium" },
     { name: "Rishabh Pant", role: "Wicket-keeper/Batsman", battingStyle: "Left-hand bat" },
-    { name: "Shreyas Iyer", role: "Batsman", battingStyle: "Right-hand bat" },
-    { name: "Yuzvendra Chahal", role: "Bowler", bowlingStyle: "Right-arm leg-break" },
-    { name: "Bhuvneshwar Kumar", role: "Bowler", bowlingStyle: "Right-arm fast-medium" },
-    { name: "Ishan Kishan", role: "Wicket-keeper/Batsman", battingStyle: "Left-hand bat" },
+    { name: "Suryakumar Yadav", role: "Middle order Batsman", battingStyle: "Right-hand bat" },
     {
       name: "Washington Sundar",
-      role: "All-rounder",
+      role: "Batting Allrounder",
       battingStyle: "Left-hand bat",
       bowlingStyle: "Right-arm off-break",
     },
-    { name: "Deepak Chahar", role: "Bowler", bowlingStyle: "Right-arm fast-medium" },
-    { name: "Suryakumar Yadav", role: "Batsman", battingStyle: "Right-hand bat" },
+    {
+      name: "Ravindra Jadeja",
+      role: "Allrounder",
+      battingStyle: "Left-hand bat",
+      bowlingStyle: "Left-arm orthodox spin",
+    },
+    {
+      name: "Hardik Pandya",
+      role: "Allrounder",
+      battingStyle: "Right-hand bat",
+      bowlingStyle: "Right-arm fast-medium",
+    },
+    { name: "Axar Patel", role: "Allrounder", battingStyle: "Left-hand bat", bowlingStyle: "Left-arm orthodox spin" },
+    {
+      name: "Tilak Varma",
+      role: "Batting Allrounder",
+      battingStyle: "Left-hand bat",
+      bowlingStyle: "Right-arm off-break",
+    },
+    { name: "Arshdeep Singh", role: "Bowler", battingStyle: "Left-hand bat", bowlingStyle: "Left-arm fast-medium" },
+    { name: "Jasprit Bumrah", role: "Bowler", battingStyle: "Right-hand bat", bowlingStyle: "Right-arm fast" },
+    { name: "Mohammed Siraj", role: "Bowler", battingStyle: "Right-hand bat", bowlingStyle: "Right-arm fast" },
+    { name: "Kuldeep Yadav", role: "Bowler", battingStyle: "Left-hand bat", bowlingStyle: "Left-arm wrist spin" },
+    { name: "Yuzvendra Chahal", role: "Bowler", battingStyle: "Right-hand bat", bowlingStyle: "Right-arm leg-break" },
   ],
   Pakistan: [
     { name: "Babar Azam", role: "Captain/Batsman", battingStyle: "Right-hand bat" },
@@ -275,7 +280,7 @@ const squadsData: Squad = {
 }
 
 export function SquadsSection() {
-  const [selectedCountry, setSelectedCountry] = useState<string>("")
+  const [selectedCountry, setSelectedCountry] = useState<string>("India")
 
   return (
     <section className="py-16 px-6">
@@ -332,12 +337,6 @@ export function SquadsSection() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        )}
-
-        {!selectedCountry && (
-          <div className="text-center py-12">
-            <p className="text-slate-400 text-lg">Please select a country to view the squad</p>
           </div>
         )}
       </div>
